@@ -37,13 +37,12 @@ class Rover {
             roverStatus.position = command.value;
             result.completed = true;
             result.roverStatus = roverStatus;
-            console.log(roverStatus.position)
          }
       
 
          if (command.commandType === 'STATUS_CHECK') {
-            result.roverStatus = roverStatus;
             result.completed = true;
+            result.roverStatus = roverStatus;
          }
 
          resultsArray.push(result);
@@ -62,8 +61,6 @@ let rover = new Rover(97835);
 let commands = [new Command('STATUS_CHECK'), new Command('MOVE', 54321)];
 let message = new Message('Test message with two commands', commands);
 let response = rover.receiveMessage(message);
-
-//console.log(response.results[1].roverStatus);
 
 console.log(response.results)
 
